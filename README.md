@@ -111,7 +111,7 @@ Uidmap = false
 # Set to true if you need automatic data persistence. Will mount the /home inside the container to .local/share/sandman/xclock
 Home = false
 
-# Deprecated option, implies in network = slirp4netns
+# Deprecated option, implies in network = pasta
 Net = false
 
 # Any networking namespace modes allowed by podman-run
