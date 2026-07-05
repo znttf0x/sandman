@@ -284,7 +284,15 @@ func TestNetwork(t *testing.T) {
 	testConfig.Run.Net = true
 	testConfig.Run.Network = ""
 	spec := CreateSpec(*testConfig)
-	ns.NSMode = specgen.Slirp
+	ns.NSMode = specgen.Pasta
+	if spec.NetNS.NSMode != ns.NSMode {
+		t.Errorf("Network namespace incorrect, expected %#v, got %#v", ns.NSMode, spec.NetNS.NSMode)
+	}
+
+	testConfig.Run.Net = true
+	testConfig.Run.Network = "pasta"
+	spec = CreateSpec(*testConfig)
+	ns.NSMode = specgen.Pasta
 	if spec.NetNS.NSMode != ns.NSMode {
 		t.Errorf("Network namespace incorrect, expected %#v, got %#v", ns.NSMode, spec.NetNS.NSMode)
 	}
